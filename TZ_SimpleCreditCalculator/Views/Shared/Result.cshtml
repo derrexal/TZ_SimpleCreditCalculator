@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Результаты расчета аннуитетного займа";
+    @model List<Result>
+}
+
+<div class="">
+    <h1 class="">@ViewData["Title"]</h1>
+    
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Дата платежа</th>
+                <th scope="col">Сумма платежа</th>
+                <th scope="col">Размер платежа по телу</th>
+                <th scope="col">Размер платежа по %</th>
+                <th scope="col">Остаток основного долга</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var record in Model)   
+            {
+                <tr>
+                    <th>@record.Id</th>
+                    <td>@record.PaymentDate.ToString("dd.MM.yyyy")</td>
+                    <td>@record.TotalPaymentAmount</td>
+                    <td>@record.PaymentAmountByBody</td>
+                    <td>@record.PaymentAmountByPercent</td>
+                    @if (record.PrincipalBalance <= 0) record.PrincipalBalance = 0; @* fix error view table value 0 *@
+                    <td>@record.PrincipalBalance</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <div>
+        <label>Итоговое значение всех переплат по кредиту: </label>
+        <br /><label class="fs-5 fw-bolder">@ViewBag.SummaryProcent</label>
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Уточненный расчет аннуитетного займа";
+}
+
+<div class="container overflow-hidden">
+    <h1>@ViewData["Title"]</h1>
+    <form method="post">
+        <div class="form-group row gy-5 p-3">
+            <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Сумма займа:</label><br />
+            <div class="col-sm-4">
+                <input class="form-control form-control-lg" id="colFormLabelLg" placeholder="10000" type="number" min=1 max=1000000000000 name="LoanAmount" required /> <!--В данном случае ограничение "max" - условное. В реальном кейсе оно уточняется в соответствие с задачей.Аналогичное ограничение установлено в классе модели-->
+            </div>
+        </div>
+        <div class="form-group row gy-5 p-3">
+            <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Срок займа (в днях):</label><br />
+            <div class="col-sm-4">
+                <input class="form-control form-control-lg" id="colFormLabelLg" placeholder="90" type="number" min=1 max=36000 name="LoanTermDays" required /> <!--В данном случае ограничение "max" - условное. В реальном кейсе оно уточняется в соответствие с задачей.Аналогичное ограничение установлено в классе модели-->
+            </div>
+        </div>
+        <div class="form-group row gy-5 p-3">
+            <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Ставка (в день):</label><br />
+            <div class="col-sm-4">
+                <input class="form-control form-control-lg" id="colFormLabelLg" placeholder="0,5" type="number" min=0 max=100 step=0.01 name="RateDays" required /> <!--В данном случае значение "step" - условное. В реальном кейсе оно уточняется в соответствие с задачей.Аналогичное ограничение установлено в классе модели-->
+            </div>
+        </div>
+        <div class="form-group row gy-5 p-3">
+            <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Шаг платежа (в днях):</label><br />
+            <div class="col-sm-4">
+                <input class="form-control form-control-lg" id="colFormLabelLg" placeholder="30" type="number" min=0 max=3600 name="PaymentStepDays" required /> <!--В данном случае значение "step" - условное. В реальном кейсе оно уточняется в соответствие с задачей.Аналогичное ограничение установлено в классе модели-->
+            </div>
+        </div>
+        <div class="form-group row gy-5 p-3">
+            <button type="submit" class="btn btn-dark btn-lg btn-block col-7">Рассчитать</button>
+        </div>
+    </form>
+</div>
